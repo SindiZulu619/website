@@ -11,6 +11,7 @@ import FeaturesSection from "./FeaturesSection";
 import Footer from './Footer'
 import FooterLinks from "./FooterLinks";
 import Form from "./Form";
+import History from "./pages/History";
 
 
 function Home() {
@@ -21,7 +22,6 @@ function Home() {
       <FeaturesBar />
       <IconGrid />
       <FeaturesSection />
-      <Form />
     </>
   );
 }
@@ -36,7 +36,8 @@ function App() {
         <Route path="/inventory" element={<UseCase />} />
         <Route path="/about" element={<About />} />
          <Route path="/contact" element={<Contact />} />
-         <Route path="/history" element={<History />} />
+           <Route path="/history" element={<History />} />
+          <Route path="/form" element={<Form />} />
       </Routes>
 
       <Footer />

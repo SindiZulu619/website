@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 
 export default function InspectionForm() {
+  const [assetId, setAssetId] = useState("Pending Scan...");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const asset = params.get("asset");
+
+    if (asset) {
+      setAssetId(asset);
+    }
+  }, []);
+
   return (
     <div className="page">
       <div className="report">
@@ -16,7 +27,7 @@ export default function InspectionForm() {
         <div className="info-grid">
           <div className="info-box">
             <label>NFC ASSET UID</label>
-            <p>Pending Scan...</p>
+            <p>{assetId}</p>
           </div>
 
           <div className="info-box">
@@ -51,7 +62,7 @@ export default function InspectionForm() {
             <tbody>
               <InspectionRow
                 title="Gross Mass"
-                description="Weigh unit. Mass loss &lt; 5% of stamped gross weight."
+                description="Weigh unit. Mass loss < 5% of stamped gross weight."
               />
 
               <InspectionRow
@@ -127,8 +138,7 @@ export default function InspectionForm() {
 
         {/* FOOTER */}
         <div className="footer">
-          Generated for SANS 1475 Compliance Audits. Secure NFC Verification
-          Enabled.
+          Generated for SANS 1475 Compliance Audits. Secure NFC Verification Enabled.
         </div>
       </div>
     </div>
